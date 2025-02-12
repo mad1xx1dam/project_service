@@ -1,4 +1,4 @@
-package faang.school.projectservice.contoller;
+package faang.school.projectservice.controller;
 
 import faang.school.projectservice.dto.meet.CreateMeetDto;
 import faang.school.projectservice.dto.meet.MeetFilterDto;
@@ -62,5 +62,16 @@ public class MeetController {
     @DeleteMapping("/{id}")
     public void deleteMeet(@PathVariable long id) {
         meetService.deleteMeet(id);
+    }
+
+
+    @PostMapping("/{id}/googleCalendar")
+    public void addMeetToCalendar(@PathVariable long id) {
+        meetService.addMeetToCalendar(id);
+    }
+
+    @GetMapping("/{projectId}/googleCalendar")
+    public List<MeetResponseDto> getProjectCalendarMeets(@PathVariable long projectId) {
+        return meetService.getProjectCalendarMeets(projectId);
     }
 }
